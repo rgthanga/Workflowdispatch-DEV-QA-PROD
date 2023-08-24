@@ -1,0 +1,39 @@
+name: CI + CD
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  DEV:
+    runs-on: ubuntu-latest
+    environment: DEV
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run this script
+        run: |
+         echo "Hello, world! I am DEV ENV"
+    
+  QA:
+    runs-on: ubuntu-latest
+    environment: QA
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run this script
+        run: |
+         echo "Hello, world! I am QA ENV"
+
+  PROD:
+    runs-on: ubuntu-latest
+    environment: PROD
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run this script
+        run: |
+         echo "Hello, world! I am PROD ENV"
